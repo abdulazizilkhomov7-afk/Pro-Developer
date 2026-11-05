@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRO DEVELOPER | Digital Studio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+    --bg:#071326;
+    --bg2:#0b1b35;
+    --card:#102342;
+    --purple:#7957e8;
+    --purple2:#a17cff;
+    --blue:#2475d5;
+    --gold:#e9c46a;
+    --white:#f5f7ff;
+    --muted:#aab7ce;
+    --border:rgba(255,255,255,.09);
+}
+
+* {margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body {font-family:Inter,sans-serif;background:var(--bg);color:var(--white)}
+a {color:inherit;text-decoration:none}
+button,input,select,textarea {font:inherit}
+.container {width:min(1150px,90%);margin:auto}
+
+header {
+    position:sticky;top:0;z-index:100;
+    background:rgba(7,19,38,.94);
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--border);
+}
+.navbar {
+    max-width:1200px;margin:auto;padding:18px 22px;
+    display:flex;justify-content:space-between;align-items:center;
+}
+.logo {font-size:23px;font-weight:900;letter-spacing:1px}
+.logo span {color:var(--purple2)}
+nav {display:flex;gap:23px;align-items:center}
+nav a {font-size:13px;color:#d0d9eb;transition:.2s}
+nav a:hover {color:var(--purple2)}
+.menu-btn {
+    display:none;background:transparent;color:white;
+    border:1px solid #42516a;padding:9px 13px;border-radius:8px;
+}
+
+.hero {
+    min-height:650px;display:flex;align-items:center;
+    background:
+      radial-gradient(ellipse at 75% 35%,rgba(121,87,232,.25),transparent 35%),
+      radial-gradient(ellipse at 10% 80%,rgba(36,117,213,.18),transparent 35%),
+      linear-gradient(135deg,#071326,#0c1c3b);
+    position:relative;overflow:hidden;
+}
+.hero-content {max-width:760px;padding:100px 0;position:relative;z-index:1}
+.eyebrow {
+    color:var(--purple2);font-size:12px;font-weight:800;
+    letter-spacing:3px;margin-bottom:22px;
+}
+.hero h1 {font-size:clamp(42px,7vw,76px);line-height:1.08;font-weight:900;margin-bottom:25px}
+.hero h1 span {
+    background:linear-gradient(90deg,#9b7aff,#4e9aff);
+    -webkit-background-clip:text;color:transparent;
+}
+.hero p {color:var(--muted);max-width:590px;line-height:1.8}
+.hero-buttons {display:flex;gap:13px;margin-top:35px;flex-wrap:wrap}
+.btn {
+    display:inline-block;padding:15px 23px;border-radius:9px;
+    font-weight:800;border:0;cursor:pointer;transition:.25s;
+}
+.btn-primary {background:linear-gradient(100deg,var(--purple),var(--blue));color:white}
+.btn-primary:hover {transform:translateY(-3px);filter:brightness(1.15)}
+.btn-outline {border:1px solid #536582;color:white;background:transparent}
+.btn-outline:hover {border-color:var(--purple2);color:var(--purple2)}
+section {padding:90px 0}
+.section-title {text-align:center;margin-bottom:48px}
+.section-title .eyebrow {margin-bottom:12px}
+.section-title h2 {font-size:clamp(29px,4vw,43px);margin-bottom:14px}
+.section-title p {color:var(--muted);line-height:1.7}
+
+.services-grid {display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.service-card {
+    background:linear-gradient(145deg,#122849,#0b1b35);
+    border:1px solid var(--border);border-radius:16px;
+    padding:27px 23px;transition:.3s;
+}
+.service-card:hover {
+    transform:translateY(-7px);
+    border-color:var(--purple);
+    box-shadow:0 15px 40px rgba(79,65,170,.16);
+}
+.service-icon {font-size:31px;margin-bottom:18px}
+.service-card h3 {font-size:18px;margin-bottom:11px}
+.service-card p {color:var(--muted);font-size:13px;line-height:1.7;min-height:65px}
+.card-link {display:inline-block;color:var(--purple2);font-size:13px;font-weight:800;margin-top:18px}
+
+.details-section,.faq-section {background:#09182d}
+.detail-grid {display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.detail-card {
+    background:var(--card);padding:27px;border-radius:14px;
+    border:1px solid var(--border);
+}
+.detail-card h3 {color:var(--purple2);margin-bottom:18px;font-size:20px}
+.detail-card ul {list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.detail-card li {color:#d6deea;font-size:13px;line-height:1.5}
+.detail-card li::before {content:"✦ ";color:var(--purple2)}
+
+.order-section {
+    background:radial-gradient(ellipse at 10% 20%,rgba(121,87,232,.13),transparent 35%),var(--bg);
+}
+.order-layout {display:grid;grid-template-columns:.8fr 1.2fr;gap:35px;align-items:start}
+.order-info {
+    background:var(--card);border:1px solid var(--border);
+    border-radius:17px;padding:30px;
+}
+.order-info h3 {font-size:26px;line-height:1.3;margin-bottom:17px}
+.order-info p {color:var(--muted);line-height:1.8;font-size:14px}
+.admin-card {
+    background:#09182d;border:1px solid var(--border);
+    border-radius:12px;padding:20px;margin-top:20px;
+}
+.admin-card .admin-title {color:var(--muted);font-size:13px;margin-bottom:5px}
+.admin-card .admin-handle {font-size:22px;font-weight:800;color:var(--white);margin-bottom:15px;display:block}
+.admin-card .admin-detail {display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px;margin-bottom:6px}
+
+.order-form {
+    background:#102342;border:1px solid var(--border);
+    border-radius:17px;padding:30px;
+}
+.form-row {display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.field {margin-bottom:17px}
+.field label {display:block;font-size:13px;color:#e1e7f0;margin-bottom:9px;font-weight:700}
+.field input,.field select,.field textarea {
+    width:100%;padding:14px;color:white;background:#09182d;
+    border:1px solid #304765;border-radius:8px;outline:none;
+}
+.field input:focus,.field select:focus,.field textarea:focus {border-color:var(--purple2)}
+.field input::placeholder,.field textarea::placeholder {color:#8190a5}
+.field select {
+    appearance:none;cursor:pointer;padding-right:40px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23a17cff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 14px center;
+}
+.field select option {background:#102342;color:white}
+.field textarea {resize:vertical;min-height:105px}
+.hidden {display:none}
+
+.process-grid {display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.process-card {
+    background:var(--card);border-radius:13px;padding:25px;
+    border:1px solid var(--border);
+}
+.process-number {color:var(--purple2);font-size:30px;font-weight:900;margin-bottom:15px}
+.process-card h3 {font-size:17px;margin-bottom:10px}
+.process-card p {color:var(--muted);font-size:13px;line-height:1.7}
+
+.faq-list {max-width:800px;margin:auto}
+.faq-item {border-bottom:1px solid #263b55;padding:20px 5px}
+.faq-item summary {
+    cursor:pointer;font-weight:700;list-style:none;
+    display:flex;justify-content:space-between;gap:15px;
+}
+.faq-item summary::after {content:"+";color:var(--purple2);font-size:22px}
+.faq-item[open] summary::after {content:"−"}
+.faq-item p {color:var(--muted);line-height:1.8;font-size:14px;padding-top:14px}
+
+.contact-box {
+    background:linear-gradient(120deg,#102342,#18284d);
+    border:1px solid rgba(121,87,232,.4);
+    padding:45px;border-radius:18px;text-align:center;
+}
+.contact-box h2 {font-size:32px;margin-bottom:15px}
+.contact-box p {color:var(--muted);line-height:1.7;margin-bottom:25px}
+.phone-number {color:var(--purple2);font-size:21px;font-weight:800;margin:15px 0 25px}
+
+footer {border-top:1px solid var(--border);padding:35px 0;text-align:center}
+footer .logo {margin-bottom:13px}
+footer p {color:var(--muted);font-size:12px;line-height:1.8}
+.footer-services {color:var(--purple2);margin:17px 0;font-size:12px;font-weight:700}
+
+@media(max-width:900px) {
+    .services-grid {grid-template-columns:repeat(2,1fr)}
+    .order-layout {grid-template-columns:1fr}
+}
+@media(max-width:650px) {
+    .menu-btn {display:block}
+    nav {
+        display:none;position:absolute;top:66px;left:0;width:100%;
+        padding:20px;background:#0a1a2e;flex-direction:column;
+        align-items:flex-start;border-bottom:1px solid #30445e;
+    }
+    nav.active {display:flex}
+    .hero {min-height:550px}
+    .hero-content {padding:75px 0}
+    .services-grid,.detail-grid,.process-grid {grid-template-columns:1fr}
+    .detail-card ul {grid-template-columns:1fr}
+    .form-row {grid-template-columns:1fr;gap:0}
+    .order-form {padding:20px}
+    .contact-box {padding:30px 20px}
+}
+</style>
+</head>
+
+<body>
+<header>
+    <div class="navbar">
+        <a href="#home" class="logo">PRO <span>DEVELOPER</span></a>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        <nav id="navMenu">
+            <a href="#home" onclick="closeMenu()">Bosh sahifa</a>
+            <a href="#services" onclick="closeMenu()">Xizmatlar</a>
+            <a href="#order" onclick="closeMenu()">Buyurtma</a>
+            <a href="#process" onclick="closeMenu()">Jarayon</a>
+            <a href="#faq" onclick="closeMenu()">FAQ</a>
+            <a href="#contact" onclick="closeMenu()">Bog‘lanish</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+    <div class="container">
+        <div class="hero-content">
+            <div class="eyebrow">CREATIVE • DIGITAL • PROFESSIONAL</div>
+            <h1>G‘oyalaringizni <span>professional</span> darajaga olib chiqing.</h1>
+            <p>PRO DEVELOPER — dizayn, dasturlash, sun’iy intellekt va reklama yo‘nalishlarida zamonaviy raqamli yechimlar.</p>
+            <div class="hero-buttons">
+                <a href="#order" class="btn btn-primary">Buyurtma berish ↗</a>
+                <a href="#services" class="btn btn-outline">Xizmatlarni ko‘rish</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="services">
+    <div class="container">
+        <div class="section-title">
+            <div class="eyebrow">BIZNING YO‘NALISHLAR</div>
+            <h2>Bizning xizmatlar</h2>
+            <p>G‘oyangiz uchun kerakli yo‘nalishni tanlang.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🎨</div><h3>Grafik Dizayn</h3>
+                <p>Brendingiz va biznesingiz uchun zamonaviy grafik dizaynlar.</p>
+                <a href="#design" class="card-link">Xizmatlarni ko‘rish ↗</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💻</div><h3>Dasturlash</h3>
+                <p>Web-saytlar va maxsus raqamli loyihalar.</p>
+                <a href="#development" class="card-link">Xizmatlarni ko‘rish ↗</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🤖</div><h3>AI Solutions</h3>
+                <p>AI yordamida rasm, video va kreativ kontent.</p>
+                <a href="#ai" class="card-link">Xizmatlarni ko‘rish ↗</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📢</div><h3>Advertising</h3>
+                <p>Biznes, mahsulot va xizmatlaringiz uchun reklama.</p>
+                <a href="#advertising" class="card-link">Xizmatlarni ko‘rish ↗</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="details-section">
+    <div class="container">
+        <div class="section-title">
+            <div class="eyebrow">BATAFSIL MA'LUMOT</div>
+            <h2>Xizmatlar katalogi</h2>
+            <p>Har bir yo‘nalish bo‘yicha mavjud xizmatlar.</p>
+        </div>
+        <div class="detail-grid">
+            <div class="detail-card" id="design">
+                <h3>🎨 Grafik Dizayn</h3>
+                <ul>
+                    <li>📄 Sertifikat dizayni</li>
+                    <li>🎨 Logo va banner dizayni</li>
+                    <li>📋 Menyu dizayni</li>
+                    <li>🪪 Rezyume (CV) tayyorlash</li>
+                    <li>💳 Vizitka dizayni</li>
+                    <li>📄 Flayer dizayni</li>
+                    <li>📊 Jadval tayyorlash</li>
+                    <li>🖼 Thumbnail dizayni</li>
+                    <li>📈 Diagramma tayyorlash</li>
+                    <li>💌 Taklifnoma dizayni</li>
+                    <li>🪪 Karta (Badge) dizayni</li>
+                    <li>✨ Eski rasmlarni yangilash</li>
+                    <li>💼 Biznes uchun maxsus dizaynlar</li>
+                </ul>
+            </div>
+
+            <div class="detail-card" id="development">
+                <h3>💻 Dasturlash</h3>
+                <ul>
+                    <li>🖥 Bir sahifali web-saytlar</li>
+                    <li>🏢 Biznes uchun web-saytlar</li>
+                    <li>📑 3–5 sahifali web-saytlar</li>
+                    <li>⚙️ Ko‘p sahifali web-loyihalar</li>
+                    <li>🌍 Web-saytlarni internetga joylashtirish</li>
+                    <li>🤖 AI yordamida web-sayt yaratish va takomillashtirish</li>
+                </ul>
+            </div>
+
+            <div class="detail-card" id="ai">
+                <h3>🤖 AI Solutions</h3>
+                <ul>
+                    <li>AI yordamida dizayn</li>
+                    <li>Rasmlarni yangilash</li>
+                    <li>Web-saytlarni takomillashtirish</li>
+                    <li>Zamonaviy AI texnologiyalari</li>
+                </ul>
+            </div>
+
+            <div class="detail-card" id="advertising">
+                <h3>📢 Advertising</h3>
+                <ul>
+                    <li>Telegram kanal reklamasi</li>
+                    <li>Web-sayt reklamasi</li>
+                    <li>Biznes va xizmatlar reklamasi</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="order-section" id="order">
+    <div class="container">
+        <div class="section-title">
+            <div class="eyebrow">Loyihani Topshirish</div>
+            <h2>Buyurtma berish</h2>
+            <p>Ma’lumotlaringizni kiriting va kerakli xizmatni tanlang.</p>
+        </div>
+
+        <div class="order-layout">
+            <div class="order-info">
+                <h3>Sizning g'oyangiz — bizning yechimimiz!</h3>
+                <p>Kerakli ma'lumotlarni yozing. Buyurtmangizni ko'rib chiqib, siz bilan Telegram orqali bog'lanamiz.</p>
+                
+                <div class="admin-card">
+                    <span class="admin-title">👨‍💻 Administrator</span>
+                    <a href="https://t.me/tot_samiy_Abdulaziz" target="_blank" class="admin-handle">@tot_samiy_Abdulaziz</a>
+                    <div class="admin-detail">⏱ 09:00 - 20:00</div>
+                    <div class="admin-detail">🌐 Online xizmat</div>
+                    <a href="https://t.me/+998998299449" target="_blank" class="btn btn-outline" style="margin-top: 15px; width: 100%; text-align: center;">Telegramga o'tish ↗</a>
+                </div>
+            </div>
+
+            <form class="order-form" id="orderForm">
+                <div class="field">
+                    <label>Ismingiz *</label>
+                    <input type="text" id="name" placeholder="Ismingiz" required>
+                </div>
+
+                <div class="field">
+                    <label>Telegram username *</label>
+                    <input type="text" id="username" placeholder="@username" required>
+                </div>
+
+                <div class="field">
+                    <label>Xizmat turini tanlang *</label>
+                    <select id="category" required>
+                        <option value="">Yo‘nalishni tanlang</option>
+                        <option value="Grafik Dizayn">🎨 Grafik Dizayn</option>
+                        <option value="Dasturlash">💻 Dasturlash</option>
+                        <option value="AI Solutions">🤖 AI Solutions</option>
+                        <option value="Advertising">📢 Advertising</option>
+                    </select>
+                </div>
+
+                <div class="field hidden" id="serviceField">
+                    <label>Aynan qaysi xizmat kerak? *</label>
+                    <select id="service">
+                        <option value="">Avval xizmat turini tanlang</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Taxminiy budjet *</label>
+                    <select id="budgetSelect" required>
+                        <option value="Kelishiladi">Kelishiladi</option>
+                        <option value="100.000 - 200.000 so'm">100.000 - 200.000 so'm</option>
+                        <option value="200.000 - 500.000 so'm">200.000 - 500.000 so'm</option>
+                        <option value="500.000 - 1.000.000 so'm">500.000 - 1.000.000 so'm</option>
+                        <option value="70$ va undan yuqori">70$ va undan yuqori</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Loyiha haqida batafsil *</label>
+                    <textarea id="description"  required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width:100%">
+                    Buyurtmani Telegramga yuborish →
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section id="process">
+    <div class="container">
+        <div class="section-title">
+            <div class="eyebrow">ISH JARAYONI</div>
+            <h2>Buyurtma qanday tayyorlanadi?</h2>
+            <p>Buyurtmadan tayyor natijagacha bo‘lgan jarayon.</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-card"><div class="process-number">01</div><h3>Buyurtma qabul qilinadi</h3><p>Siz forma orqali xizmat turini va loyiha haqidagi ma’lumotlarni yuborasiz.</p></div>
+            <div class="process-card"><div class="process-number">02</div><h3>Ma’lumotlar o‘rganiladi</h3><p>Talablaringiz va loyiha tafsilotlari ko‘rib chiqiladi.</p></div>
+            <div class="process-card"><div class="process-number">03</div><h3>Narx va muddat kelishiladi</h3><p>Ish hajmiga qarab narx va topshirish muddati belgilanadi.</p></div>
+            <div class="process-card"><div class="process-number">04</div><h3>Ish boshlanadi</h3><p>Kelishilgan talablar asosida loyiha tayyorlanadi.</p></div>
+            <div class="process-card"><div class="process-number">05</div><h3>Tekshiruv va tuzatishlar</h3><p>Tayyorlangan ish ko‘rib chiqiladi va kelishilgan tuzatishlar amalga oshiriladi.</p></div>
+            <div class="process-card"><div class="process-number">06</div><h3>Yakuniy natija</h3><p>Tayyor loyiha sizga topshiriladi.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="faq-section" id="faq">
+    <div class="container">
+        <div class="section-title">
+            <div class="eyebrow">SAVOL VA JAVOBLAR</div>
+            <h2>Ko‘p beriladigan savollar</h2>
+        </div>
+        <div class="faq-list">
+            <details class="faq-item"><summary>Buyurtma qanday beriladi?</summary><p>Buyurtma bo‘limidagi formani to‘ldiring va kerakli xizmatni tanlang.</p></details>
+            <details class="faq-item"><summary>Narxlar qanday belgilanadi?</summary><p>Narx xizmat turi, ish hajmi va talablaringizga qarab belgilanadi.</p></details>
+            <details class="faq-item"><summary>Buyurtmani qancha vaqtda tayyorlaysiz?</summary><p>Muddat loyiha hajmiga bog‘liq. Buyurtma tafsilotlari ko‘rib chiqilgach, muddat kelishiladi.</p></details>
+            <details class="faq-item"><summary>Ishga o‘zgartirish kiritish mumkinmi?</summary><p>Ha. Kelishilgan talablar doirasida tuzatishlar amalga oshiriladi.</p></details>
+            <details class="faq-item"><summary>O‘zim xohlagan web-saytga buyurtma bersam bo‘ladimi?</summary><p>Ha! Dasturlash bo‘limida o‘zingiz xohlagan turdagi web-saytni buyurtma qilishingiz mumkin.</p></details>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container">
+        <div class="contact-box">
+            <div class="eyebrow">ALOQA</div>
+            <h2>Biz bilan bog‘laning</h2>
+            <p>Buyurtma yoki savollaringiz bo‘lsa, telefon raqamimiz orqali Telegramda yozing yoki qo‘ng‘iroq qiling.</p>
+            <div class="phone-number">+998 99 829 94 49</div>
+            <a href="https://t.me/+998998299449" target="_blank" class="btn btn-primary">Telegram orqali yozish ↗</a>
+            <a href="tel:+998998299449" class="btn btn-outline">Qo‘ng‘iroq qilish</a>
+        </div>
+    </div>
+</section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="logo">PRO <span>DEVELOPER</span></div>
+        <p>G‘oya sizdan — sifatli va zamonaviy yechim bizdan!</p>
+        <div class="footer-services">🎨 GRAFIK DIZAYN | 💻 DASTURLASH | 🤖 AI SOLUTIONS | 📢 ADVERTISING</div>
+        <p>© 2026 PRO DEVELOPER. Barcha huquqlar himoyalangan.</p>
+    </div>
+</footer>
+
+<script>
+function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("active");
+}
+function closeMenu() {
+    document.getElementById("navMenu").classList.remove("active");
+}
+
+const services = {
+    "Grafik Dizayn": [
+        "📄 Sertifikat dizayni",
+        "🎨 Logo va banner dizayni",
+        "📋 Menyu dizayni",
+        "🪪 Rezyume (CV) tayyorlash",
+        "💳 Vizitka dizayni",
+        "📄 Flayer dizayni",
+        "📊 Jadval tayyorlash",
+        "🖼 Thumbnail dizayni",
+        "📈 Diagramma tayyorlash",
+        "💌 Taklifnoma dizayni",
+        "🪪 Karta (Badge) dizayni",
+        "✨ Eski rasmlarni yangilash",
+        "💼 Biznes uchun maxsus dizaynlar"
+    ],
+    "Dasturlash": [
+        "🖥 Bir sahifali web-saytlar",
+        "🏢 Biznes uchun web-saytlar",
+        "📑 3–5 sahifali web-saytlar",
+        "⚙️ Ko‘p sahifali web-loyihalar",
+        "🌍 Web-saytlarni internetga joylashtirish",
+        "🤖 AI yordamida web-sayt yaratish va takomillashtirish"
+    ],
+    "AI Solutions": [
+        "AI yordamida dizayn",
+        "Rasmlarni yangilash",
+        "Web-saytlarni takomillashtirish",
+        "Zamonaviy AI texnologiyalari"
+    ],
+    "Advertising": [
+        "Telegram kanal reklamasi",
+        "Web-sayt reklamasi",
+        "Biznes va xizmatlar reklamasi"
+    ]
+};
+
+const category = document.getElementById("category");
+const service = document.getElementById("service");
+const serviceField = document.getElementById("serviceField");
+
+category.addEventListener("change", function() {
+    const selected = this.value;
+    service.innerHTML = '<option value="">Xizmatni tanlang</option>';
+
+    if (selected && services[selected]) {
+        services[selected].forEach(item => {
+            const option = document.createElement("option");
+            option.value = item;
+            option.textContent = item;
+            service.appendChild(option);
+        });
+        serviceField.classList.remove("hidden");
+        service.required = true;
+    } else {
+        serviceField.classList.add("hidden");
+        service.required = false;
+    }
+});
+
+document.getElementById("orderForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const username = document.getElementById("username").value.trim();
+    const selectedCategory = category.value;
+    const selectedService = service.value;
+    const budget = document.getElementById("budgetSelect").value;
+    const description = document.getElementById("description").value.trim();
+
+    if (!name || !username || !selectedCategory || !selectedService || !description) {
+        alert("Iltimos, barcha majburiy maydonlarni to‘ldiring!");
+        return;
+    }
+
+    const message = 
+        `💎 PRO DEVELOPER — YANGI BUYURTMA\n\n` +
+        `👤 Mijoz: ${name}\n` +
+        `📱 Telegram: ${username}\n\n` +
+        `📦 Xizmat: ${selectedCategory}  ${selectedService}\n` +
+        `💰 Budjet: ${budget}\n\n` +
+        `📝 LOYIHA TAFSILOTLARI:\n${description}\n\n` +
+        `━━━━━━━━━━━━━━\n` +
+        `🌐 PRO DEVELOPER`;
+
+    // 1-usul: Telegram ilovasini to'g'ridan-to'g'ri ochish (Windows/Android/iOS uchun eng ishonchli)
+    const tgDeepLink = `tg://msg_url?url=${encodeURIComponent('https://t.me/tot_samiy_Abdulaziz')}&text=${encodeURIComponent(message)}`;
+    
+    // 2-usul: Brauzer orqali Ochish (Agar 1-usul ishlamasa zaxira havola)
+    const tgWebLink = `https://t.me/share/url?url=${encodeURIComponent('https://t.me/tot_samiy_Abdulaziz')}&text=${encodeURIComponent(message)}`;
+
+    // Avval Telegram ilovasini ochishga harakat qiladi
+    window.location.href = tgDeepLink;
+
+    // Agar kompyuterda Telegram dasturi ochilmasa, 500ms dan keyin brauzerdagi Share oynasiga yo'naltiradi
+    setTimeout(() => {
+        window.open(tgWebLink, '_blank');
+    }, 500);
+});
+</script>
+</body>
+</html>
